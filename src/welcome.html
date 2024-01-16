@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <link rel="stylesheet" href="/src/style.css">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+
+  <title>Quản Lý Thư Viện - Welcome</title>
+</head>
+
+<body>
+  <div class="container" id="container">
+    <div class="form-container sign-up">
+      <form>
+        <h1>Đăng Ký</h1>
+        <p></p>
+        <input type="text" placeholder="Họ và Tên">
+        <input type="text" placeholder="Tên đăng nhập">
+        <input type="text" placeholder="Mật khẩu">
+        <input type="text" placeholder="Xác nhận mật khẩu">
+        <label ></label>
+        <button>
+          Đăng Ký
+        </button>
+      </form>
+    </div>
+    <div class="form-container sign-in">
+      <form>
+        <h1>Đăng Nhập</h1>
+        <p></p>
+        <input type="text" placeholder="Tên đăng nhập">
+        <input type="text" placeholder="Mật khẩu">
+        <label class="admin-opt">Đăng nhập với tư cách Quản trị viên <input class="checkbox" type="checkbox" > </label>
+               
+        <button>
+          Đăng Nhập
+        </button>
+      </form>
+    </div>
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Chào mừng bạn đã trở lại LinhHuynh-Library !</h1>
+          <p>Hãy nhập vào đầy đủ thông tin để trải nghiệm Thư viện</p>
+          <button class="hidden" id="login">
+            Đăng Nhập
+          </button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Chào mừng bạn đã đến với LinhHuynh-Library !</h1>
+          <p>Tạo tài khoản để trải nghiệm Thư viện</p>
+          <button class="hidden" id="register">
+            Đăng Ký
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src=/src/preload.js></script>
+</body>
+
+</html>
