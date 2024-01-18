@@ -2,6 +2,7 @@ const path = require('node:path');
 const { app, BrowserWindow, dialog } = require('electron');
 // const { Notification } = require('electron');
 const { dir } = require('node:console');
+const sqlite3 = require('sqlite3').verbose();
 
 
 const createWindow = () => {
