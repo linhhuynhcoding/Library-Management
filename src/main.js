@@ -1,23 +1,32 @@
 const path = require('node:path');
-const { app, BrowserWindow} = require('electron');
+const { app, BrowserWindow, dialog } = require('electron');
+// const { Notification } = require('electron');
+const { dir } = require('node:console');
+
 
 const createWindow = () => {
     const win = new BrowserWindow({
-        width : 800,
-        height : 600,
+        width: 1920,
+        height: 1080,
         webPreferences: {
-            preload : path.join(__dirname, "preload.js")
+            contextIsolation: true,
+            preload: path.join(__dirname, "preload.js")
         }
     });
-
-    win.loadFile('./src/welcome.html');
+    // win.loadURL('https://github.com')
+    
+    win.loadFile('src/welcome.html');
 }
 
-app.whenReady().then(() => {
+
+
+
+app.on('ready', () => {
     createWindow();
+    console.log(dialog.showMessageBox({ message : "Linh dep trai" }));
+    
 });
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') app.quit();
-});
-
+// app.on('window-all-closed', () => {
+//     if (process.platform !== 'darwin') app.quit();
+// });
