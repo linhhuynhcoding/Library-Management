@@ -19,12 +19,12 @@
         <p></p>
         <h1>Đăng Ký</h1>
         <p></p>
-        <input type="text" placeholder="Họ và Tên">
-        <input type="text" placeholder="Tên đăng nhập">
-        <input id="register-password" type="password" placeholder="Mật khẩu">
-        <input id="register-password-confirm" type="password" placeholder="Xác nhận mật khẩu">
+        <input type="text" id="name" min="1" max="50" required placeholder="Họ và Tên">
+        <input type="text" id="username-regis" min="1" max="20" required placeholder="Tên đăng nhập">
+        <input id="password-register"  min="1" max="10" required type="password" placeholder="Mật khẩu">
+        <input id="password-confirm-register" min="1" max="10" required type="password" placeholder="Xác nhận mật khẩu">
         <p></p>
-        <button>
+        <button type="button" class="btn-regis" id="regis-btn">
           Đăng Ký
         </button>
       </form>
@@ -35,11 +35,11 @@
         <p></p>
         <h1>Đăng Nhập</h1>
         <p></p>
-        <input type="text" placeholder="Tên đăng nhập">
-        <input id="login-password" type="password" placeholder="Mật khẩu">
+        <input type="text" id="username-login" required placeholder="Tên đăng nhập">
+        <input id="login-password" type="password" required placeholder="Mật khẩu">
         <label>Đăng nhập với tư cách Quản trị viên <input id="admin" class="checkbox" type="checkbox"> </label>
 
-        <button>
+        <button type="button" class="btn-login" id="login-btn">
           Đăng Nhập
         </button>
       </form>
@@ -63,6 +63,7 @@
       </div>
     </div>
   </div>
+  <script src="../src/renderer.js"></script>
 </body>
 
 </html>

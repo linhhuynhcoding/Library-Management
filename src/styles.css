@@ -7,6 +7,19 @@
     font-family: 'Roboto', sans-serif;
 }
 
+span {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    text-align: left;
+    vertical-align: top;
+    width: 100%;
+    text-indent: 2%;
+    color: rgb(199, 12, 12);
+}
+
+
+
 img {
     width: auto;
     height: 100px;
@@ -45,7 +58,6 @@ body {
     margin: 10px 0;
     flex-direction: row;
 }
-
 .container button {
     background-color: rgb(255,52,131);
     color: white;
@@ -115,7 +127,6 @@ body {
 
 .sign-up {
     right: 0;
-    opacity: 0;
     width: 50%;
     z-index: 1;
 }
@@ -222,4 +233,20 @@ body {
 
 .container.active .toggle-right {
     transform: translateX(200%);
+}
+
+.btn-login:hover {
+    background: rgb(156, 0, 60);
+    cursor: pointer;
+}
+
+.btn-regis:focus {
+    background: rgb(156, 0, 60);
+    cursor: pointer;
+}
+
+button.hidden:hover {
+    background-color: white;
+    color: rgb(255,52,131);
+    cursor: pointer;
 }
