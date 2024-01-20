@@ -4,26 +4,26 @@ const { error } = require('node:console');
 const sqlite3 = require('sqlite3').verbose();
 
 const db = new sqlite3.Database('./assets/database.db');
-let win;
+let window_welcome;
 
 const toMessage = {
-    showError : (_mess) => new Promise (async (resolve, reject) => {
+    showError: (_mess) => new Promise(async (resolve, reject) => {
         const opts = {
             type: 'error',
             title: 'LỖI',
             message: _mess,
             buttons: ['OK'],
-          };
-        await dialog.showMessageBox(win, opts);
+        };
+        await dialog.showMessageBox(opts);
     }),
-    showInfo : (_mess) => new Promise (async (resolve, reject) => {
+    showInfo: (_mess) => new Promise(async (resolve, reject) => {
         const opts = {
             type: 'info',
             title: 'THÔNG BÁO',
             message: _mess,
             buttons: ['OK'],
-          };
-        await dialog.showMessageBox(win, opts);
+        };
+        await dialog.showMessageBox(opts);
     })
 }
 
@@ -89,23 +89,23 @@ const database = {
             }
         });
     }),
-    addUser : (db, userObj) => new Promise( (resolve, reject) => {
-        const {userID: userID, userName: userName, Name: name, userPass: userPass } = userObj;
-    
+    addUser: (db, userObj) => new Promise((resolve, reject) => {
+        const { userID: userID, userName: userName, Name: name, userPass: userPass } = userObj;
+
         db.run('INSERT INTO users (userID, userName, name, userPass, isAdmin) VALUES (?, ?, ?, ?, ?)', [userID, userName, name, userPass, 0], (err) => {
             if (err) {
                 reject();
                 return;
             }
-                                
+
             resolve();
             return;
         });
     }),
-    checkPass : (db, [userName, userPass]) => new Promise(async (resolve, reject) => {
+    checkPass: (db, [userName, userPass]) => new Promise(async (resolve, reject) => {
         try {
-            const user = await new Promise ((innerResolve, innerReject) => {
-                db.get('SELECT userPass FROM users WHERE userName = ?',[userName], (err, row) => {
+            const user = await new Promise((innerResolve, innerReject) => {
+                db.get('SELECT userPass FROM users WHERE userName = ?', [userName], (err, row) => {
                     if (err) {
                         innerReject(err.message);
                         return;
@@ -126,13 +126,12 @@ const database = {
         catch (err) {
             reject(err)
         }
-        
+
     })
 }
 
-
 const createWindow = () => {
-    win = new BrowserWindow({
+    window_welcome = new BrowserWindow({
         width: 1920,
         height: 1080,
         webPreferences: {
@@ -142,74 +141,10 @@ const createWindow = () => {
     });
     // win.loadURL('https://github.com')
 
-    win.loadFile('src/welcome.html');
+    window_welcome.loadFile('src/welcome/welcome.html');
 };
 
 app.on('ready', () => {
-    ipcMain.handle('database:checkExist', async (event, ...args) => {
-        try {
-            console.log(...args);
-            const db = await database.init();
-            await database.createUsers(db);
-            const response = await database.checkIsExist(db, ...args);  
-            return response;
-        }
-        catch (err){
-            console.log(err);
-            return err;
-        }
-    })
-    ipcMain.handle('database:checkPass', async (event, ...args) => {
-        try {
-            const db = await database.init();
-            await database.createUsers(db);
-            const response = await database.checkPass(db, ...args);  
-            return response;
-        }
-        catch (err){
-            console.log(err);
-            return err;
-        }
-    })
-    ipcMain.handle('database:userID', async () => {
-        try {
-            const db = await database.init();
-            await database.createUsers(db);
-            const userID = await database.getlastID(db);            
-            return userID;
-        }
-        catch (err){
-            console.log(err);
-        }
-    })
-    ipcMain.handle('database:addUser', async (event, ...args) => {
-        try {
-            const db = await database.init();
-            await database.createUsers(db);
-            await database.addUser(db, ...args);               
-        }
-        catch (err){
-            console.log(err);
-        }
-    });
-
-    ipcMain.handle('toMessage::error', async (event, ...args) => {
-        try {
-            await toMessage.showError(...args);         
-        }
-        catch (err){
-            console.log(err);
-        }
-    });
-    
-    ipcMain.handle('toMessage::info', async (event, ...args) => {
-        try {
-            await toMessage.showInfo(...args);         
-        }
-        catch (err){
-            console.log(err);
-        }
-    });
 
     createWindow();
 
@@ -221,4 +156,71 @@ app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') app.quit();
 });
 
+ipcMain.handle('database:checkExist', async (event, ...args) => {
+    try {
+        console.log(...args);
+        const db = await database.init();
+        await database.createUsers(db);
+        const response = await database.checkIsExist(db, ...args);
+        return response;
+    }
+    catch (err) {
+        console.log(err);
+        return err;
+    }
+})
+ipcMain.handle('database:checkPass', async (event, ...args) => {
+    try {
+        const db = await database.init();
+        await database.createUsers(db);
+        const response = await database.checkPass(db, ...args);
+        return response;
+    }
+    catch (err) {
+        console.log(err);
+        return err;
+    }
+})
+ipcMain.handle('database:userID', async () => {
+    try {
+        const db = await database.init();
+        await database.createUsers(db);
+        const userID = await database.getlastID(db);
+        return userID;
+    }
+    catch (err) {
+        console.log(err);
+    }
+})
+ipcMain.handle('database:addUser', async (event, ...args) => {
+    try {
+        const db = await database.init();
+        await database.createUsers(db);
+        await database.addUser(db, ...args);
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 
+ipcMain.handle('toMessage::error', async (event, ...args) => {
+    try {
+        await toMessage.showError(...args);
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+
+ipcMain.handle('toMessage::info', async (event, ...args) => {
+    try {
+        await toMessage.showInfo(...args);
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+
+ipcMain.on('goto:home', () => {
+    window_welcome.loadFile('src/home/index.html');
+});
