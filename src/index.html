@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Quản Lý Thư Viện</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Quản Lý Thư Viện</title>
+</head>
+
+<body>
+  <div style="position: static;">
+    <section class="hero columns is-flex-direction-row has-background-primary" >
+      <figure class="image column is-pulled-left"  style="max-width: 250px;;border: 2px solid black;">
+        <img src="/assets/logo.png" style="height: 150px; width: auto; padding: 20px; margin: 0 0 0 0;">
+      </figure>
+      <div class="hero-body column" style="border: 2px solid black;">
+        <p class="title">
+          Chào mừng bạn đã đến với Thư Viện
+        </p>
+        <p class="subtitle">
+          Trang dành cho quản trị viên
+        </p>
+      </div>
+    </section>
+    <div class="container is-max-desktop">
+      <div class="notification is-primary">
+        This container has a <code>max-width</code> of <code>$desktop - $container-offset</code> on widescreen and
+        fullhd.
+      </div>
+    </div>
+  </div>
+
+</body>
+
 </html>
