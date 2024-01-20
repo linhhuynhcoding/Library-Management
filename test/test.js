@@ -83,7 +83,7 @@ async function main() {
         const db = await database.init();
         await database.createUsers(db);
         db.get('SELECT * FROM users WHERE userName = ?',["linh12"], (err, row) => {
-            console.log(row["userPass"]);
+            console.log(row['userPass']);
         });
     }
     catch (err) {

@@ -82,10 +82,10 @@ const database = {
     checkIsExist: (db, userName) => new Promise((resolve, reject) => {
         db.get(`SELECT * FROM users WHERE userName = ?`, [userName], (err, row) => {
             if (row) {
-                reject(false);
+                resolve(true);
             }
             else {
-                resolve(true);
+                reject(false);
             }
         });
     }),
@@ -102,19 +102,31 @@ const database = {
             return;
         });
     }),
-    checkPass : (db, userName, userPass) => new Promise((resolve, reject) => {
-    
-        db.get('SELECT * FROM users WHERE userName = ?',[userName], (err, row) => {
-            if (err) {
-                reject(err)
+    checkPass : (db, [userName, userPass]) => new Promise(async (resolve, reject) => {
+        try {
+            const user = await new Promise ((innerResolve, innerReject) => {
+                db.get('SELECT userPass FROM users WHERE userName = ?',[userName], (err, row) => {
+                    if (err) {
+                        innerReject(err.message);
+                        return;
+                    }
+                    innerResolve(row);
+                });
+            });
+
+            // console.log(user);
+
+            if (user['userPass'] === userPass) {
+                resolve(true);
             }
             else {
-                // if (String(row["userPass"]) === userPass) {
-                //     resolve(true);
-                // }
-                // else resolve(false);
+                resolve(false);
             }
-        });
+        }
+        catch (err) {
+            reject(err)
+        }
+        
     })
 }
 
@@ -136,6 +148,7 @@ const createWindow = () => {
 app.on('ready', () => {
     ipcMain.handle('database:checkExist', async (event, ...args) => {
         try {
+            console.log(...args);
             const db = await database.init();
             await database.createUsers(db);
             const response = await database.checkIsExist(db, ...args);  
