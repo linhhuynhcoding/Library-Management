@@ -17,7 +17,6 @@
     "electron": "^28.1.4"
   },
   "dependencies": {
-    "bulma-start": "^0.0.5",
     "sqlite3": "^5.1.7"
   }
 }
