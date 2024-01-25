@@ -28,8 +28,8 @@
         </section>
         <div class="menu">
           <ul class="menu-list">
-            <li >
-              <a class="" href="../../src/home/index_book.html">
+            <li>
+              <a class="is-active" href="#">
                 <i class='bx bx-book icon'></i>
                 <span>Sách</span>
               </a>
@@ -41,7 +41,7 @@
               </a>
             </li>
             <li>
-              <a class="is-active" href="#">
+              <a class="" href="../../src/home/index.html">
                 <i class='bx bx-info-circle icon'></i>
                 <span>Thông tin</span>
               </a>
@@ -59,6 +59,16 @@
   </div>
 
   </div>
+  <script>
+    $("td").hover(
+      function () {
+        $(this).addClass('is-selected');
+      },
+      function () {
+        $(this).removeClass('is-selected');
+      }
+    );
+  </script>
 </body>
 
 </html>

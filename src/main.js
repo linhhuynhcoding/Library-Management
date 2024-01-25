@@ -24,6 +24,15 @@ const toMessage = {
             buttons: ['OK'],
         };
         await dialog.showMessageBox(opts);
+    }),
+    confirm: (_mess) => new Promise(async (resolve, reject) => {
+        const opts = {
+            type: 'question',
+            title: 'XÁC NHẬN',
+            message: _mess,
+            buttons: ['Xác nhận', 'Hủy bỏ'],
+        };
+        await dialog.showMessageBox(opts);
     })
 }
 
@@ -215,6 +224,15 @@ ipcMain.handle('toMessage::error', async (event, ...args) => {
 ipcMain.handle('toMessage::info', async (event, ...args) => {
     try {
         await toMessage.showInfo(...args);
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
+
+ipcMain.handle('toMessage::confirm', async (event, ...args) => {
+    try {
+        await toMessage.confirm(...args);
     }
     catch (err) {
         console.log(err);

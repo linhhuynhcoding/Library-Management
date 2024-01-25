@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,900;1,300&display=swap');
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css";
+@import "node_modules/bulma-responsive-tables/bulma-responsive-tables";
+
+* {
+    align-items: center;
+}
+.block:not(:last-child),.box:not(:last-child),.breadcrumb:not(:last-child),.content:not(:last-child),.level:not(:last-child),.message:not(:last-child),.notification:not(:last-child),.pagination:not(:last-child),.progress:not(:last-child),.subtitle:not(:last-child),.table-container:not(:last-child),.table:not(:last-child),.tabs:not(:last-child),.title:not(:last-child) {
+    margin-bottom: 1.5rem;
+}
+
+.container {
+    flex-grow: 1;
+    margin: 0 auto;
+    position: relative;
+    width: auto
+}
+
+aside {
+    height: 100vh;
+}
+
+.column {
+    display: block;
+    padding: 0.75rem;
+    border-radius: 6px;
+}
+
+.box {
+    background-color: white;
+    border-radius: 6px;
+    display: block;
+    padding: 1.25rem;
+    /* text-align: center; */
+    align-items: center;
+    height: 100vh;
+    margin: 10px 10px 10px 10px;
+}
+.container {
+    background-color: #F2F6FA;
+    display: flex;
+
+}
+table tr:hover td{background-color:hsl(48, 100%, 96%);}

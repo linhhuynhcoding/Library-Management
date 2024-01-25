@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Quản Lý Thư Viện</title>
+</head>
+
+<body>
+  <div id="modal-modify-user" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+      <div class="box" style="height: fit-content;">
+        <div class="field">
+          <label class="label">UID</label>
+          <div class="control">
+            <input id ="UID" class="input" type="text" placeholder="" disabled>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input id ="modify-name" class="input" type="text" placeholder="">
+          </div>
+        </div>
+        
+        <div class="field">
+          <label class="label">Username</label>
+          <div class="control">
+            <input id ="modify-username" class="input " type="text" placeholder="">
+          </div>
+        </div>
+        
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control ">
+            <input id ="modify-password" class="input " type="text" placeholder="" >
+          </div>
+        </div>
+        
+        <div class="field is-grouped buttons is-right">
+          <div class="control">
+            <button id="modify-submit-button" class="button is-link">Submit</button>
+          </div>
+          <div class="control">
+            <button id="modify-cancel-button" class="button is-link is-light ">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+
+  <div class="container is-fullhd columns is-gapless">
+    <nav class=" has-background-link-light column is-3">
+      <aside>
+        <section class="hero">
+          <div class="hero-body">
+            <figure class="image">
+              <img class="logo" src="../../assets/logo.png">
+            </figure>
+          </div>
+        </section>
+        <div class="menu">
+          <ul class="menu-list">
+            <li>
+              <a class="" href="../../src/home/index_book.html">
+                <i class='bx bx-book icon'></i>
+                <span>Sách</span>
+              </a>
+            </li>
+            <li>
+              <a class="is-active" href="#">
+                <i class='bx bx-user icon'></i>
+                <span>Người dùng</span>
+              </a>
+            </li>
+            <li>
+              <a class="" href="../../src/home/index.html">
+                <i class='bx bx-info-circle icon'></i>
+                <span>Thông tin</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </nav>
+    <div class=" column is-9 ">
+      <div class="box content">
+        <table class="table">
+          <thead class="has-background-warning	">
+            <tr>
+              <th>USER ID</th>
+              <th>NAME</th>
+              <th>USERNAME</th>
+              <th>PASSWORD</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="UID0001">
+              <td>UID0001</td>
+              <td>Huỳnh Vũ Nhật Linh</td>
+              <td>nhatlinh</td>
+              <td>3004</td>
+              <td>
+                <div class="buttons is-right">
+                  <button id="btnUID0001" class="js-modal-trigger button is-small is-primary" type="button"
+                    data-target="modal-modify-user">
+                    Sửa
+                  </button>
+                  <button id="btnUID0001" class="button is-small is-danger is-light" type="button">
+                    Xóa
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="../../src/home/rederer.js">
+  </script>
+</body>
+
+</html>

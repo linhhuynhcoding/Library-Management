@@ -17,6 +17,7 @@
     "electron": "^28.1.4"
   },
   "dependencies": {
+    "bulma-responsive-tables": "^1.2.5",
     "sqlite3": "^5.1.7"
   }
 }
