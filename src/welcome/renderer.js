@@ -96,11 +96,11 @@ document.getElementById("login-btn").addEventListener("click", async (event) => 
         const login_passInput = document.getElementById('login-password');
 
         const checkExist = await window.API.checkifExist((login_usernameInput.value).toLowerCase());
-        if (checkExist == false) {
+        if (checkExist === false) {
             await window.API.toMessageError("TÊN ĐĂNG NHẬP HOẶC MẬT KHẨU KHÔNG CHÍNH XÁC !");
         }
         const checkPass = await window.API.checkPass((login_usernameInput.value).toLowerCase(), login_passInput.value);
-        if (checkPass == false) {
+        if (checkPass === false) {
             await window.API.toMessageError("MẬT KHẨU KHÔNG CHÍNH XÁC !");
             return;
         }

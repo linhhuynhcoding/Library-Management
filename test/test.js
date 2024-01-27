@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-
+const fs = require('fs');
 
 const database = {
     init: () => new Promise((resolve, reject) => {
@@ -21,6 +21,18 @@ const database = {
             }
             else {
                 console.log("Đã mở thành công users");
+                resolve();
+            }
+        });
+    }),
+    createBooks: (db) => new Promise((resolve, reject) => {
+
+        db.run('CREATE TABLE IF NOT EXISTS books (isbn TEXT, title TEXT, subject TEXT, author TEXT, publisher TEXT, date TEXT, pages INT, copies INT)', (err) => {
+            if (err) {
+                reject(err.message);
+            }
+            else {
+                console.log("Đã mở thành công books");
                 resolve();
             }
         });
@@ -75,16 +87,47 @@ const database = {
             resolve();
             return;
         });
+    }),
+    getlistUser : () => new Promise(async (resolve, reject) => {
+        try {
+            const users = await new Promise((innerResolve, innerReject) => {
+                db.all('SELECT * FROM users WHERE isAdmin = 0', (err, row) => {
+                    if (err) {
+                        innerReject(err.message);
+                        return;
+                    }
+                    innerResolve(row);
+                });
+            });
+        }
+        catch (err){
+            reject(err);
+        }
     })
 }
 
 async function main() {
     try {
         const db = await database.init();
-        await database.createUsers(db);
-        db.get('SELECT * FROM users WHERE userName = ?',["linh12"], (err, row) => {
-            console.log(row['userPass']);
-        });
+        await database.createBooks(db);
+        // db.get('SELECT * FROM users WHERE userName = ?',["linh12"], (err, row) => {
+        //     console.log(row['userPass']);
+        // });
+        
+        let t = [];
+        const l = await new Promise((resolve, reject) => {
+            db.all('SELECT title FROM books', (err, row) => {
+                if (row) {
+                    for (i of row) {
+                        // console.log(i);
+                        t.push(i["title"]);
+                    }
+                    resolve(t);
+                }
+            })
+        }); 
+        console.log(l);
+        db.close();
     }
     catch (err) {
         console.log(err);
