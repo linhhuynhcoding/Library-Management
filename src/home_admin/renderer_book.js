@@ -268,7 +268,7 @@ modifyBook = {
                 mofify_pages !== pages ||
                 mofify_copies !== copies) {
 
-                let mess = "Bạn có chắc chắn muốn thay đổi thông tin người dùng không ?";
+                let mess = "Bạn có chắc chắn muốn thay đổi thông tin sách không ?";
                 const response = await window.API.toMessageConfirm(mess);
                 if (response === 0) {
                     // event.preventDefault();
