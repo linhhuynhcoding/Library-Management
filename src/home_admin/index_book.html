@@ -12,7 +12,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Quản Lý Thư Viện - Sách</title>
+  <title>Quản Lý Thư Viện - Quản lý Sách</title>
 </head>
 
 <body>
@@ -23,12 +23,12 @@
         <form>
           <div class="box " style="height: fit-content; width: 100%;">
             <div class="field">
-              <label class="label">Mã số a</label>
+              <label class="label">Mã số</label>
               <div class="control">
                 <input id="add-isbn" class="input" type="text" placeholder="" disabled>
               </div>
             </div>
-  
+
             <div class="field">
               <label class="label">Tên sách</label>
               <div class="control">
@@ -59,7 +59,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="columns">
               <div class="column field is-7" style="margin: 0;">
                 <label class="label">Nhà Xuất Bản</label>
@@ -74,7 +74,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="columns">
               <div class="column field" style="margin: 0;">
                 <label class="label"> Số trang</label>
@@ -89,7 +89,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="field is-grouped buttons is-right	" style="align-items: center; display: flex;">
               <div class="control  is-align-content-center">
                 <button id="add-submit-button" type="button" class="button is-link">Submit</button>
@@ -99,15 +99,15 @@
               </div>
             </div>
           </div>
-  
+
         </form>
       </div>
-  
+
       <button class="modal-close is-large" aria-label="close"></button>
     </div>
     <div id="modal-modify-book" class="modal">
       <div class="modal-background"></div>
-  
+
       <div class="modal-content is-align-content-center	">
         <form>
           <div class="box " style="height: fit-content; width: 100%;">
@@ -117,7 +117,7 @@
                 <input id="isbn" class="input" type="text" placeholder="" disabled>
               </div>
             </div>
-  
+
             <div class="field">
               <label class="label">Tên sách</label>
               <div class="control">
@@ -148,7 +148,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="columns">
               <div class="column field is-7" style="margin: 0;">
                 <label class="label">Nhà Xuất Bản</label>
@@ -163,7 +163,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="columns">
               <div class="column field" style="margin: 0;">
                 <label class="label"> Số trang</label>
@@ -178,7 +178,7 @@
                 </div>
               </div>
             </div>
-  
+
             <div class="field is-grouped buttons is-right	" style="align-items: center; display: flex;">
               <div class="control  is-align-content-center">
                 <button id="modify-submit-button" type="button" class="button is-link">Submit</button>
@@ -188,10 +188,10 @@
               </div>
             </div>
           </div>
-  
+
         </form>
       </div>
-  
+
       <button class="modal-close is-large" aria-label="close"></button>
     </div>
   </div>
@@ -214,110 +214,98 @@
               </a>
             </li>
             <li>
-              <a class="" href="../../src/home/index_user.html">
+              <a class="" href="../../src/home_admin/index_user.html">
                 <i class='bx bx-user icon'></i>
                 <span>Người dùng</span>
               </a>
             </li>
             <li>
-              <a class="" href="../../src/home/index.html">
+              <a class="" href="../../src/home_admin/index.html">
                 <i class='bx bx-info-circle icon'></i>
                 <span>Thông tin</span>
+              </a>
+            </li>        
+            <li id="btn-logout">
+              <a class="" >
+                <i class='bx bx-log-out icon'></i>
+                <span>Đăng xuất</span>
               </a>
             </li>
           </ul>
         </div>
       </aside>
     </nav>
-    <div class=" column is-9 is-gapless ">
-      <div class="box content is-gapless has-background-warning-light">
-        <div id="Bar" class="columns main-bar is-gapless has-background-primary ">
-            <div class="column is-10 ">
-              <div class="columns is-multiline" style="width: 100%;">
-                <div class="column is-full ">
-                  <input id="searchBar" class="input is-rounded is-link is-normal " style="width: 100%; " type="search" placeholder="Tìm kiếm Tên Sách hoặc Tác Giả">
-                </div>
-                <div class="column is-3">
-                  <div class="select is-danger is-rounded is-small" style="width: 100%;">
-                    <select id="filter-subject" style="width: 100%;">
-                      <option value="Tất cả">Tất cả</option>
-                      <option value="Văn Học">Văn Học</option>
-                      <option value="Kinh Tế">Kinh Tế</option>
-                      <option value="Tâm Lý - Kỹ Năng Sống">Tâm Lý - Kỹ Năng Sống</option>
-                      <option value="Nuôi Dạy Con">Nuôi Dạy Con</option>
-                      <option value="Sách Thiếu Nhi">Sách Thiếu Nhi</option>
-                      <option value="Giáo Khoa">Giáo Khoa</option>
-                      <option value="Sách Học Ngoại Ngữ">Sách Học Ngoại Ngữ</option>
-                      <option value="Tiểu Sử - Hồi Ký">Tiểu Sử - Hồi Ký</option>
-                    </select>
-                    <!-- <input id ="modify-username" class="input " type="text" placeholder="" required> -->
-                  </div>
-                </div>
-                <div class="column is-3">
-                  <div class="select is-warning is-rounded is-small" style="width: 100%;">
-                    <select id="filter-publisher" style="width: 100%;">
-                      <option value="Tất cả">Tất cả</option>
-                    </select>
-                    <!-- <input id ="modify-username" class="input " type="text" placeholder="" required> -->
-                  </div>
-                </div>
-                <div class="column is-3">
-                  <div class="select is-info is-rounded is-small" style="width: 100%;">
-                    <select id="filter-year" style="width: 100%;">
-                      <option value="Tất cả">Tất cả</option>
-                    </select>
-                    <!-- <input id ="modify-username" class="input " type="text" placeholder="" required> -->
-                  </div>
-                </div>
-
+    <div class=" column is-12 is-gapless ">
+      <div class="box content has-background-warning-light	" style="margin-inline: 10px;">
+        <div id="Bar" class="columns main-bar is-multiline ;" style="margin: auto;">
+          <div class="column is-full" style="padding: 0;">
+            <p class="title is-size-4 ">
+              Quản lý Sách
+            </p>
+          </div>
+          <div class="column is-small" style="padding: 0;">
+            <button class="js-add-modal-trigger button is-small is-info	is-rounded " type="button"
+              data-target="modal-add-book">Thêm Sách</button>
+          </div>
+          <div class="columns" style="width: 100%; padding: 0;">
+            <div class="column is-5 ">
+              <input id="searchBar" class="input is-rounded is-link is-small" style="width: 100%; " type="search"
+                placeholder="Tìm kiếm Tên Sách hoặc Tác Giả">
+            </div>
+            <div class="column" style="min-width: fit-content;max-width: fit-content;">
+              <div class="select is-danger is-rounded is-small" style="width: fit-content;">
+                <select id="filter-subject" style="width: 100%;">
+                  <option value="Tất cả">Tất cả</option>
+                  <option value="Văn Học">Văn Học</option>
+                  <option value="Kinh Tế">Kinh Tế</option>
+                  <option value="Tâm Lý - Kỹ Năng Sống">Tâm Lý - Kỹ Năng Sống</option>
+                  <option value="Nuôi Dạy Con">Nuôi Dạy Con</option>
+                  <option value="Sách Thiếu Nhi">Sách Thiếu Nhi</option>
+                  <option value="Giáo Khoa">Giáo Khoa</option>
+                  <option value="Sách Học Ngoại Ngữ">Sách Học Ngoại Ngữ</option>
+                  <option value="Tiểu Sử - Hồi Ký">Tiểu Sử - Hồi Ký</option>
+                </select>
+                <!-- <input id ="modify-username" class="input " type="text" placeholder="" required> -->
               </div>
             </div>
-            <div class="column is-large ">
-              <button class="js-add-modal-trigger button is-large is-warning	 " type="button"
-            data-target="modal-add-book">
-            Thêm Sách
-          </button>
+            <div class="column" style="min-width: fit-content;max-width: fit-content;">
+              <div class="select is-warning is-rounded is-small" style="width: fit-content;">
+                <select id="filter-publisher" style="width: 100%;">
+                  <option value="Tất cả">Tất cả</option>
+                </select>
+                <!-- <input id ="modify-username" class="input " type="text" placeholder="" required> -->
+              </div>
             </div>
-          
-          
+            <div class="column " style="min-width: fit-content;max-width: fit-content;">
+              <div class="select is-info is-rounded is-small" style="width: fit-content;">
+                <select id="filter-year" style="width: 100%;">
+                  <option value="Tất cả">Tất cả</option>
+                </select>
+                <!-- <input id ="modify-username" class="input " type="text" placeholder="" required> -->
+              </div>
+            </div>
+
+          </div>
+
         </div>
-        <div class="table-container ">
+        <p></p>
+        <div class="table-container " style="margin: auto;">
           <table class="has-text-centered">
-            <thead class="has-background-warning is-size-7  has-text-weight-bold">
-              <tr>
-                <th>MÃ SỐ</th>
-                <th colspan="3">TÊN SÁCH</th>
-                <th colspan="2">CHỦ ĐỀ</th>
-                <th colspan="2">TÁC GIẢ</th>
-                <th colspan="2">NHÀ XUẤT BẢN</th>
-                <th>NGÀY XUẤT BẢN</th>
-                <th>SỐ TRANG</th>
-                <th>SỐ BẢN CÒN LẠI</th>
-                <th colspan="2">THAO TÁC</th>
+            <thead class="has-background-warning is-size-7 has-text-weight-bold">
+              <tr >
+                <th class="has-text-danger-dark">MÃ SỐ</th>
+                <th class="has-text-danger-dark" colspan="3">TÊN SÁCH</th>
+                <th class="has-text-danger-dark" colspan="2">CHỦ ĐỀ</th>
+                <th class="has-text-danger-dark" colspan="2">TÁC GIẢ</th>
+                <th class="has-text-danger-dark" colspan="2">NHÀ XUẤT BẢN</th>
+                <th class="has-text-danger-dark" colspan="2">NGÀY XUẤT BẢN</th>
+                <th class="has-text-danger-dark" colspan="2">SỐ TRANG</th>
+                <th class="has-text-danger-dark" colspan="2">SỐ BẢN CÒN LẠI</th>
+                <th class="has-text-danger-dark" colspan="2">THAO TÁC</th>
               </tr>
             </thead>
             <tbody id="tableBook" class="is-size-7 has-background-warning-light has-text-centered">
-              <tr id="BID0001">
-                <td>BID0002</td>
-                <td colspan="3" class="has-text-weight-bold has-text-justified">Sổ Đỏ</td>
-                <td colspan="2">Giáo Khoa</td>
-                <td colspan="2" class="has-text-justified">Nguyễn Trọng Phụng</td>
-                <td colspan="2" class="has-text-justified">NXB Kim Đồng</td>
-                <td>25/01/2004</td>
-                <td>102 trang</td>
-                <td>300 bản</td>
-                <td colspan="2">
-                  <div class="buttons is-right ">
-                    <button id="mbtnBID0001" class="js-modal-trigger button is-small is-primary" type="button"
-                      data-target="modal-modify-book">
-                      Sửa
-                    </button>
-                    <button id="btnBID0001" class="button is-small is-danger is-light" type="button">
-                      Xóa
-                    </button>
-                  </div>
-                </td>
-              </tr>
+              
             </tbody>
           </table>
         </div>
@@ -326,7 +314,7 @@
   </div>
 
   </div>
-  <script src="../../src/home/renderer_book.js">
+  <script src="../../src/home_admin/renderer_book.js">
   </script>
 </body>
 

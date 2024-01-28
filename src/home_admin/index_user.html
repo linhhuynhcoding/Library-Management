@@ -12,7 +12,7 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Quản Lý Thư Viện</title>
+  <title>Quản Lý Thư Viện - Quản lý Người Dùng</title>
 </head>
 
 <body>
@@ -20,42 +20,42 @@
     <div class="modal-background"></div>
 
     <div class="modal-content">
-      <form >
+      <form>
         <div class="box" style="height: fit-content; width: 100%;">
           <div class="field">
             <label class="label">UID</label>
             <div class="control">
-              <input id ="UID" class="input" type="text" placeholder="" disabled>
+              <input id="UID" class="input" type="text" placeholder="" disabled>
             </div>
           </div>
-  
+
           <div class="field">
             <label class="label">Name</label>
             <div class="control">
-              <input id ="modify-name" class="input" type="text" placeholder="" required>
+              <input id="modify-name" class="input" type="text" placeholder="" required>
             </div>
           </div>
-          
+
           <div class="field">
             <label class="label">Username</label>
             <div class="control">
-              <input id ="modify-username" class="input " type="text" placeholder="" required>
+              <input id="modify-username" class="input " type="text" placeholder="" required>
             </div>
           </div>
-          
+
           <div class="field">
             <label class="label">Password</label>
             <div class="control ">
-              <input id ="modify-password" class="input " type="text" placeholder="" required>
+              <input id="modify-password" class="input " type="text" placeholder="" required>
             </div>
           </div>
-          
+
           <div class="field is-grouped buttons is-right">
             <div class="control">
               <button id="modify-submit-button" type="button" class="button is-link">Submit</button>
             </div>
             <div class="control">
-              <button id="modify-cancel-button"  type="button"  class="button is-link is-light ">Cancel</button>
+              <button id="modify-cancel-button" type="button" class="button is-link is-light ">Cancel</button>
             </div>
           </div>
         </div>
@@ -79,7 +79,7 @@
         <div class="menu">
           <ul class="menu-list">
             <li>
-              <a class="" href="../../src/home/index_book.html">
+              <a class="" href="../../src/home_admin/index_book.html">
                 <i class='bx bx-book icon'></i>
                 <span>Sách</span>
               </a>
@@ -91,9 +91,15 @@
               </a>
             </li>
             <li>
-              <a class="" href="../../src/home/index.html">
+              <a class="" href="../../src/home_admin/index.html">
                 <i class='bx bx-info-circle icon'></i>
                 <span>Thông tin</span>
+              </a>
+            </li>        
+            <li id="btn-logout">
+              <a class="" >
+                <i class='bx bx-log-out icon'></i>
+                <span>Đăng xuất</span>
               </a>
             </li>
           </ul>
@@ -102,18 +108,27 @@
     </nav>
     <div class="column is-9 ">
       <div class="has-background-success-light box content">
-        <table class="table">
-          <thead class="has-background-success">
-            <tr>
-              <th style="">USER ID</th>
-              <th style="">NAME</th>
-              <th style="">USERNAME</th>
-              <th style="">PASSWORD</th>
-              <th style=""></th>
-            </tr>
-          </thead>
-          <tbody id="tableUser"class="has-background-success-light">
-            <!-- <tr id="UID0001">
+        <div id="Bar" class="columns main-bar is-multiline ;" style="margin: auto;">
+          <div class="column is-full" style="padding: 0;">
+            <p class="title is-size-4 has-text-info-dark">
+              Quản lý Người Dùng
+            </p>
+          </div>
+          <div style="height: 10px;width: 100%;">
+
+          </div>
+          <table class="table has-text-centered">
+            <thead class="has-background-success is-size-7 has-text-weight-bold">
+              <tr>
+                <th class="has-text-success-light	" colspan="2">USER ID</th>
+                <th class="has-text-success-light	" colspan="5">NAME</th>
+                <th class="has-text-success-light	" colspan="3">USERNAME</th>
+                <th class="has-text-success-light	" colspan="3">PASSWORD</th>
+                <th class="has-text-success-light	" colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody id="tableUser" class="has-background-success-light is-size-7">
+              <!-- <tr id="UID0001">
               <td>UID0001</td>
               <td>Huỳnh Vũ Nhật Linh</td>
               <td>nhatlinh</td>
@@ -130,13 +145,13 @@
                 </div>
               </td>
             </tr> -->
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-  <script src="../../src/home/rederer.js">
-  </script>
+    <script src="../../src/home_admin/rederer.js">
+    </script>
 </body>
 
 </html>

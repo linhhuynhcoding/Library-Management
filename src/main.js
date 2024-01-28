@@ -329,6 +329,16 @@ const database = {
             console.log("OK");
             resolve(true);
         })
+    }),
+    isAdmin: (db, userName) => new Promise((resolve, reject) => {
+        db.get(`SELECT * FROM users WHERE userName = ? AND isAdmin = 1`, [userName], (err, row) => {
+            if (row) {
+                resolve(true);
+            }
+            else {
+                reject(false);
+            }
+        });
     })
 }
 
@@ -365,6 +375,20 @@ ipcMain.handle('database:checkExist', async (event, ...args) => {
         const db = await database.init();
         await database.createUsers(db);
         const response = await database.checkIsExist(db, ...args);
+        // console.log(response);
+        return response;
+    }
+    catch (err) {
+        return err;
+    }
+})
+
+ipcMain.handle('database:isAdmin', async (event, ...args) => {
+    try {
+        console.log(...args);
+        const db = await database.init();
+        await database.createUsers(db);
+        const response = await database.isAdmin(db, ...args);
         // console.log(response);
         return response;
     }
@@ -549,6 +573,15 @@ ipcMain.handle('toMessage::confirm', async (event, ...args) => {
     }
 });
 
-ipcMain.on('goto:home', () => {
-    window_welcome.loadFile('src/home/index.html');
+ipcMain.on('goto:homeAdmin', () => {
+    window_welcome.loadFile('src/home_admin/index.html');
 });
+
+ipcMain.on('goto:homeUser', () => {
+    window_welcome.loadFile('src/home_user/index.html');
+});
+
+ipcMain.on('goto:welcome', () => {
+    window_welcome.loadFile('src/welcome/welcome.html');
+});
+

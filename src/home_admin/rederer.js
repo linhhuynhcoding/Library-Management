@@ -13,11 +13,11 @@ getDataUser = {
 
             let row = document.createElement('tr');
             row.setAttribute("id", `${uid}`);
-            row.innerHTML += `<td>${uid}</td>`;
-            row.innerHTML += `<td>${name}</td>`;
-            row.innerHTML += `<td>${username}</td>`;
-            row.innerHTML += `<td>${password}</td>`;
-            htmlofBtn = `<td>`;
+            row.innerHTML += `<td colspan="2" >${uid}</td>`;
+            row.innerHTML += `<td colspan="5" >${name}</td>`;
+            row.innerHTML += `<td colspan="3" >${username}</td>`;
+            row.innerHTML += `<td colspan="3" >${password}</td>`;
+            htmlofBtn = `<td colspan="3">`;
             htmlofBtn += `<div class="buttons is-right">`;
             htmlofBtn += `<button id="mbtn${uid}" class="js-modal-trigger button is-small is-primary" type="button" data-target="modal-modify-user">Sửa</button>`;
             htmlofBtn += `<button id="btn${uid}" class="js-deleteuser button is-small is-danger is-light" type="button">Xóa</button>`;
@@ -218,4 +218,13 @@ modifyUser = {
 document.addEventListener('DOMContentLoaded', async () => {
     await getDataUser.init();
     modifyUser.init();
+    
+    document.getElementById("btn-logout").addEventListener("click", async () => {
+        const confirm = await window.API.toMessageConfirm("Bạn có chắc chắn muốn thoát không ?");
+        
+        if (confirm == 1 || confirm == undefined) return;
+
+        await window.API.gotoWelcome();
+
+    }) ;
 });

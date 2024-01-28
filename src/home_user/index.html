@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"> -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma-rtl.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Thư Viện</title>
+</head>
+
+<body>
+  <div class="container is-fullhd columns is-gapless">
+    <nav class=" has-background-link-light column is-3">
+      <aside>
+        <section class="hero">
+          <div class="hero-body">
+            <figure class="image">
+              <img class="logo" src="../../assets/logo.png">
+            </figure>
+          </div>
+        </section>
+        <div class="menu">
+          <ul class="menu-list" >
+            <li >
+              <a class="" href="../../src/home_user/index_book.html">
+                <i class='bx bx-book icon'></i>
+                <span>Sách</span>
+              </a>
+            </li>
+            <li>
+              <a class="is-active" href="#">
+                <i class='bx bx-info-circle icon'></i>
+                <span>Thông tin</span>
+              </a>
+            </li>            
+            <li id="btn-logout">
+              <a class="" >
+                <i class='bx bx-log-out icon'></i>
+                <span>Đăng xuất</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </nav>
+    <div class=" column is-9 ">
+      <div class="box content">
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+  <script >
+    document.getElementById("btn-logout").addEventListener("click", async () => {
+        const confirm = await window.API.toMessageConfirm("Bạn có chắc chắn muốn thoát không ?");
+        
+        if (confirm == 1 || confirm == undefined) return;
+
+        await window.API.gotoWelcome();
+
+    }) ;
+  </script>
+</body>
+
+</html>

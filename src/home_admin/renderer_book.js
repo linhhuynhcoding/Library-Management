@@ -54,9 +54,9 @@ getDataBook = {
             row.innerHTML += `<td colspan="2">${subject}</td>`;
             row.innerHTML += `<td colspan="2" class="has-text-left">${author}</td>`;
             row.innerHTML += `<td colspan="2" class="has-text-justified">${publisher}</td>`;
-            row.innerHTML += `<td>${date}</td>`;
-            row.innerHTML += `<td>${pages} trang</td>`;
-            row.innerHTML += `<td>${copies} bản</td>`;
+            row.innerHTML += `<td colspan="2">${date}</td>`;
+            row.innerHTML += `<td colspan="2">${pages} trang</td>`;
+            row.innerHTML += `<td colspan="2">${copies} bản</td>`;
             htmlofBtn = `<td colspan="2">`;
             htmlofBtn += `<div class="buttons is-right">`;
             htmlofBtn += `<button id="mbtn${isbn}" class="js-modal-trigger button is-small is-primary" type="button" data-target="modal-modify-book">Sửa</button>`;
@@ -418,7 +418,16 @@ addBook = {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+    
     await getDataBook.init();
     modifyBook.init();
     addBook.init();
+    document.getElementById("btn-logout").addEventListener("click", async () => {
+        const confirm = await window.API.toMessageConfirm("Bạn có chắc chắn muốn thoát không ?");
+        
+        if (confirm == 1 || confirm == undefined) return;
+
+        await window.API.gotoWelcome();
+
+    }) ;
 });

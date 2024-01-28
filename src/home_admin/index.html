@@ -29,13 +29,13 @@
         <div class="menu">
           <ul class="menu-list">
             <li >
-              <a class="" href="../../src/home/index_book.html">
+              <a class="" href="../../src/home_admin/index_book.html">
                 <i class='bx bx-book icon'></i>
                 <span>Sách</span>
               </a>
             </li>
             <li>
-              <a class="" href="../../src/home/index_user.html">
+              <a class="" href="../../src/home_admin/index_user.html">
                 <i class='bx bx-user icon'></i>
                 <span>Người dùng</span>
               </a>
@@ -44,6 +44,12 @@
               <a class="is-active" href="#">
                 <i class='bx bx-info-circle icon'></i>
                 <span>Thông tin</span>
+              </a>
+            </li>        
+            <li id="btn-logout">
+              <a class="" >
+                <i class='bx bx-log-out icon'></i>
+                <span>Đăng xuất</span>
               </a>
             </li>
           </ul>
@@ -59,6 +65,16 @@
   </div>
 
   </div>
+  <script>
+    document.getElementById("btn-logout").addEventListener("click", async () => {
+        const confirm = await window.API.toMessageConfirm("Bạn có chắc chắn muốn thoát không ?");
+        
+        if (confirm == 1 || confirm == undefined) return;
+
+        await window.API.gotoWelcome();
+
+    }) ;
+  </script>
 </body>
 
 </html>

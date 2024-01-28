@@ -8,6 +8,7 @@ contextBridge.exposeInMainWorld('API', {
     getUserID:      ()          => ipcRenderer.invoke('database:userID'),
     getlistUser:    ()          => ipcRenderer.invoke('database:getlistUser'),
 
+    isAdmin:        (userName)  => ipcRenderer.invoke('database:isAdmin', userName),
     checkifExist:   (userName)  => ipcRenderer.invoke('database:checkExist', userName),
     addUser:        (userObj)   => ipcRenderer.invoke('database:addUser', userObj),
     deleteUser:     (userID)    => ipcRenderer.invoke('database:deleteUser', userID),
@@ -15,7 +16,9 @@ contextBridge.exposeInMainWorld('API', {
     checkPass :     (userName, userPass) => ipcRenderer.invoke('database:checkPass', [userName, userPass]),
     updateUserInfo: (userID, Name, userName, userPass) => ipcRenderer.invoke('database:updateUserInfo', [userID, Name, userName, userPass]),
 
-    gotoHome: () => ipcRenderer.send('goto:home'),
+    gotoHomeAdmin: () => ipcRenderer.send('goto:homeAdmin'),
+    gotoHomeUser: () => ipcRenderer.send('goto:homeUser'),
+    gotoWelcome: () => ipcRenderer.send('goto:welcome'),
 
     book : {
         getBookID:      ()          => ipcRenderer.invoke('databaseBook:bookID'),

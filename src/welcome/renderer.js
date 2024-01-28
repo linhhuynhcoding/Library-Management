@@ -92,9 +92,19 @@ document.getElementById("login-btn").addEventListener("click", async (event) => 
     const isValid = await CheckValidLogin();
     
     if (isValid) {
+        const checkboxAdmin = document.getElementById('admin')
         const login_usernameInput = document.getElementById('username-login');
         const login_passInput = document.getElementById('login-password');
 
+        
+        if (checkboxAdmin.checked === true) {
+            const checkExist = await window.API.isAdmin((login_usernameInput.value).toLowerCase());
+            if (checkExist == false) {
+                await window.API.toMessageError("TÊN ĐĂNG NHẬP HOẶC MẬT KHẨU KHÔNG CHÍNH XÁC !");
+                return;            
+            } 
+        }
+        
         const checkExist = await window.API.checkifExist((login_usernameInput.value).toLowerCase());
         if (checkExist === false) {
             await window.API.toMessageError("TÊN ĐĂNG NHẬP HOẶC MẬT KHẨU KHÔNG CHÍNH XÁC !");
@@ -105,7 +115,11 @@ document.getElementById("login-btn").addEventListener("click", async (event) => 
             return;
         }
 
-        await window.API.gotoHome();
+        if (checkboxAdmin.checked) {
+            await window.API.gotoHomeAdmin();
+            return;
+        }
+        await window.API.gotoHomeUser();
     }
 });
 

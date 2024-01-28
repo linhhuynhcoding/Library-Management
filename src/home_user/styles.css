@@ -10,6 +10,7 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 .block:not(:last-child),.box:not(:last-child),.breadcrumb:not(:last-child),.content:not(:last-child),.level:not(:last-child),.message:not(:last-child),.notification:not(:last-child),.pagination:not(:last-child),.progress:not(:last-child),.subtitle:not(:last-child),.table-container:not(:last-child),.table:not(:last-child),.tabs:not(:last-child),.title:not(:last-child) {
     margin-bottom: 1.5rem;
@@ -17,19 +18,24 @@ html, body {
 
 .main-bar {
     /* display: table; */
-    max-height: 150px;
+    max-height: 100px;
     max-width: 1200px;
     height: 100%;
-    padding: 2rem;
+    /* padding: 1rem; */
     width: 100%;
-    border-radius: 30px 30px 0px 30px;
+    border-radius: 0px 30px 0px 0px;
+}
+
+.Bar {
+    max-height: 150px;
+    max-width: 1200px;
 }
 
 .container {
     flex-grow: 1;
     margin: 0 auto;
     position: relative;
-    width: auto
+    width: auto;
 }
 
 aside {
@@ -130,4 +136,4 @@ button {
 }
 
 #tableUser > tr:hover td{background-color:hsl(48, 100%, 96%);}
-#tableBook > tr:hover td{background-color:rgb(224, 238, 130);}
+#tableBook > tr:hover td{background-color:hsl(48, 100%, 88%);}
