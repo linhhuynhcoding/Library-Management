@@ -28,7 +28,7 @@
         </section>
         <div class="menu">
           <ul class="menu-list">
-            <li >
+            <li>
               <a class="" href="../../src/home_admin/index_book.html">
                 <i class='bx bx-book icon'></i>
                 <span>Sách</span>
@@ -45,9 +45,9 @@
                 <i class='bx bx-info-circle icon'></i>
                 <span>Thông tin</span>
               </a>
-            </li>        
+            </li>
             <li id="btn-logout">
-              <a class="" >
+              <a class="">
                 <i class='bx bx-log-out icon'></i>
                 <span>Đăng xuất</span>
               </a>
@@ -57,23 +57,39 @@
       </aside>
     </nav>
     <div class=" column is-9 ">
-      <div class="box content">
-
+      <div class="box content" >
+        <section class="hero is-small is-primary">
+          <div class="hero-body">
+            <p class="title is-size-4" style="margin: 5px;">
+              Dự án Quản lý Thư Viện
+            </p>
+            <p class="subtitle is-size-6"style="margin: 5px;">
+              Công nghệ : Electron JS
+            </p>
+            <p class="subtitle is-size-6"style="margin: 5px;">
+              Hệ Quản trị CSDL : SQLite
+            </p>
+            <p class="subtitle is-size-6"style="margin: 5px;">
+              Sinh viên Huỳnh Vũ Nhật Linh
+            </p>
+          </div>
+        </section>
       </div>
-
     </div>
+
+  </div>
   </div>
 
   </div>
   <script>
     document.getElementById("btn-logout").addEventListener("click", async () => {
-        const confirm = await window.API.toMessageConfirm("Bạn có chắc chắn muốn thoát không ?");
-        
-        if (confirm == 1 || confirm == undefined) return;
+      const confirm = await window.API.toMessageConfirm("Bạn có chắc chắn muốn thoát không ?");
 
-        await window.API.gotoWelcome();
+      if (confirm == 1 || confirm == undefined) return;
 
-    }) ;
+      await window.API.gotoWelcome();
+
+    });
   </script>
 </body>
 
